@@ -1,33 +1,20 @@
 @if (count($books) > 0)
     @foreach ($books as $book)
-        <a class="card" href="/book/detail/{{ $book->id }}">
-            <img class="img-box" src="{{ $book->cover_img }}" alt="cover_image">
-
-            <div class="book_info">
-                <span class="book_title">{{ $book->title }}</span>
-
-                <div class="book_wrapper">
-                    <p class="book_detail">
-                        Description: Spider-Man faces the strongest super-powered foes and most dangerous gauntlets the
-                        Multiverse can throw his way, and every time Miles Morales falls, he rises again — stronger than
-                        before. Until now. There are some punches you don’t get up from and a new villain isn’t pulling
-                        a
-                        single one as they threaten everyone and everything Miles loves.
-                    </p>
-
-                    <span>Genre:
-                        @if ($book->genres)
-                            @foreach ($book->genres as $genre)
-                                <span>{{ $genre->genre_name->name }}</span>
-                            @endforeach
-                        @endif
-                    </span>
-
-                    @if ($book->user)
-                        <h3>By {{ $book->user->username }}</h3>
-                    @endif
-                </div>
-            </div>
+        <a class="book" href="/book/detail/{{ $book->id }}">
+            <diiv class="cover">
+                <img src="{{ $book->cover_img }}" alt="cover_image">
+            </diiv>
+            <h1>{{ $book->title }}</h1>
+            <h2>Genre:
+                @if ($book->genres)
+                    @foreach ($book->genres as $genre)
+                        <span>{{ $genre->name }}</span>
+                    @endforeach
+                @endif
+            </h2>
+            @if ($book->user)
+                <h3>By {{ $book->user->username }}</h3>
+            @endif
         </a>
     @endforeach
 @endif

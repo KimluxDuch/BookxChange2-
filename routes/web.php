@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,11 @@ Route::get('/signUp', [MainController::class, 'signUp']);
 Route::get('/login', [MainController::class, 'login'])->name('login');
 Route::get('/logout', [MainController::class, 'logout']);
 Route::get('book/detail/{id}', [MainController::class, 'bookDetail']);
+
+
+Route::resource('profile', ProfileController::class);
+
+
 
 // Functionality routes
 Route::post('/registerUser', [MainController::class, 'registerUser']);

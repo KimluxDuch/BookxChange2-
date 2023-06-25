@@ -1,7 +1,6 @@
 @extends('layout.master')
 @section('content')
     <div class="container">
-        <a href="../../upload">{{ $user->username }}</a>
 
         <h1 class="new">New Arrival</h1>
         <form action="./" method="GET">
