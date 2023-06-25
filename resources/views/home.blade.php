@@ -23,9 +23,9 @@
                 <section class="books">
 
                     <div class="search">
-                        <input type="text" placeholder="Search Titles" name="searchQuery">
-                        <button type="submit">
-                            <img src="../../images/search.png" alt="">
+                        <span class="search_icon"></span>
+                        <input type="text" placeholder="Search Titles" name="searchQuery" class="search_input">
+                        <button type="submit" class="search_button">
                             Search
                         </button>
                     </div>
@@ -42,6 +42,7 @@
             display: flex;
             flex-direction: column;
             row-gap: 3rem;
+            padding: 0 1rem;
         }
 
         .genre div {
@@ -68,15 +69,11 @@
         }
 
         .search {
+            position: relative;
             display: flex;
             align-items: center;
-        }
-
-        .search input {
-            font-family: 'Ysabeau Office', sans-serif;
-            width: 400px;
-            padding: .5rem .5rem;
-            font-size: 1rem;
+            width: max-content;
+            height: 40px;
         }
 
         .search img {
@@ -106,6 +103,117 @@
             padding: 2rem 0;
             text-align: center;
             border-bottom: 1px solid rgb(163, 162, 162);
+        }
+
+
+        /* New */
+        .search_icon {
+            position: absolute;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256.001 256.001' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m232.477 215.516-40.678-40.678a96.108 96.108 0 1 0-16.972 16.97l40.679 40.678a12 12 0 1 0 16.97-16.97ZM43.997 116a72 72 0 1 1 72 72 72.081 72.081 0 0 1-72-72Z' fill='grey'/%3E%3C/svg%3E") left content-box no-repeat;
+        }
+
+        .search_input {
+            cursor: pointer;
+            font: normal 1rem Calibri;
+            color: #505050;
+            width: 320px;
+            height: 20px;
+            padding: 10px 100px 10px 40px;
+            border-radius: 4px;
+            border: solid 2px #29b0f7;
+        }
+
+        .search_button {
+            position: absolute;
+            right: 1px;
+            width: 90px;
+            height: 40px;
+            background-color: #e4e4e4;
+            border: none;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .card {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            max-width: 100%;
+            height: 425px;
+            background: white;
+            border-radius: 20px;
+            transition: 0s;
+            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+        }
+
+        .card:hover {
+            height: 450px;
+        }
+
+        .card .img-box {
+            position: absolute;
+            top: 20px;
+            z-index: 1;
+            width: calc(100% - 40px);
+            height: max-content;
+            background: #333;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.5s;
+        }
+
+        .card:hover .img-box {
+            top: -100px;
+            scale: 0.75;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+        }
+
+        .book_info {
+            position: absolute;
+            bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 35px;
+            text-align: center;
+            overflow: hidden;
+            transition: 0.5s;
+        }
+
+        .book_title {
+            font: bold 30px Calibri;
+            text-align: center;
+            overflow: hidden;
+            transition: 0.5s;
+            flex: 0 0 auto;
+        }
+
+        .book_wrapper {
+            opacity: 0;
+            transition: 1s;
+        }
+
+        .card:hover .book_wrapper {
+            opacity: 1;
+        }
+
+        .book_detail {
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font: normal 15px Calibri;
+            text-align: center;
+            overflow: hidden;
+            transition: 0.5s;
+            margin: 15px;
+        }
+
+        .card:hover .book_info {
+            height: max-content;
         }
     </style>
 @endsection
