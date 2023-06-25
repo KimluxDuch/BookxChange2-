@@ -22,6 +22,10 @@ At Book X Change, we understand the joy of immersing oneself in the pages of a c
         background: linear-gradient(rgba(233, 233, 233, .8),rgba(233, 233, 233, .8)), url('../../images/classmate.jpg');
         background-position: center;
         background-size: cover;
+        min-height: 60vh;
+        display: flex;
+        justify-content: center ;
+        align-items: center;
     }
     .about h1 {
         text-align: center;

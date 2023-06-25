@@ -10,7 +10,7 @@
                     <h1 class="genre">Genre:
                         @if ($book->genres)
                             @foreach ($book->genres as $genre)
-                                <span>{{ $genre->genre_name->name }}</span>
+                                <span>{{ $genre->name }}</span>
                             @endforeach
                         @endif
                     </h1>

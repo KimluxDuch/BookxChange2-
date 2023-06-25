@@ -1,7 +1,7 @@
 <div class="black-bar">
     <a href="">CAMBODIA</a>
     @if (Auth::check())
-    <a href="">{{Auth::User()->username}}</a>
+    <a href="{{ route('profile.index')}}">{{Auth::User()->username}}</a>
         <a href="../../logout">Logout</a>
     @else
         <a href="../../signUp">Register</a>

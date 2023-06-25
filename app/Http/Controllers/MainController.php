@@ -42,12 +42,12 @@ class MainController extends Controller
         $user = Auth::user() ;
 
         if ($genresQuery) {
-            $books = Books::with('user', 'genres.genre_name')->where('title', 'like', '%' . $query . '%')
+            $books = Books::where('title', 'like', '%' . $query . '%')
                 ->whereHas('genres', function ($query) use ($genresQuery) {
                     $query->where('genre_id', $genresQuery);
                 })->get();
         } else {
-            $books = Books::with('user', 'genres.genre_name')->where('title', 'like', '%' . $query . '%')->get();
+            $books = Books::where('title', 'like', '%' . $query . '%')->get();
         }
 
         $genres = Genres::get();
@@ -87,7 +87,7 @@ class MainController extends Controller
     }
     public function bookDetail($id)
     {
-        $book = Books::with('user', 'genres.genre_name')->where('id', $id)->first();
+        $book = Books::where('id', $id)->first();
         return view('bookDetail', [
             'book' => $book,
         ]);
