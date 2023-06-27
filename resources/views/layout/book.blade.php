@@ -1,21 +1,30 @@
 @if (count($books) > 0)
     @foreach ($books as $book)
-        <a class="book" href="/book/detail/{{ $book->id }}">
-            <diiv class="cover">
-                <img src="{{ $book->cover_img }}" alt="cover_image">
-            </diiv>
-            <h1>{{ $book->title }}</h1>
-            <h2>Genre:
-                @if ($book->genres)
-                    @foreach ($book->genres as $genre)
-                        <span>{{ $genre->name }}</span>
-                    @endforeach
+    <a class="card" href="/book/detail/{{ $book->id }}">
+        <img class="img-box" src="{{ $book->cover_img }}" alt="cover_image">
+
+        <div class="book_info">
+            <span class="book_title">{{ $book->title }}</span>
+
+            <div class="book_wrapper">
+                <p class="book_detail">
+                    {{ $book->description }}
+                </p>
+
+                <span>Genre:
+                    @if ($book->genres)
+                        @foreach ($book->genres as $genre)
+                            <span>{{ $genre->name }},</span>
+                        @endforeach
+                    @endif
+                </span>
+
+                @if ($book->user)
+                    <h3>Post By {{ $book->user->username }}</h3>
                 @endif
-            </h2>
-            @if ($book->user)
-                <h3>By {{ $book->user->username }}</h3>
-            @endif
-        </a>
+            </div>
+        </div>
+    </a>
     @endforeach
 @endif
 

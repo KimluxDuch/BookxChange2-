@@ -38,3 +38,9 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/contactus', function () {
     return view('contactus');
 });
+Route::get('/privacy', function () {
+    return view('privacy');
+});
+Route::get('/termcondition', function () {
+    return view('termcondition');
+});

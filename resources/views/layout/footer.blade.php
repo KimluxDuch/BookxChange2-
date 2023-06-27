@@ -8,8 +8,8 @@
     <hr>
     <div class="foot_section">
         <a href="/contactus" style="color: white;">Contact Us</a>
-        <a href="" style="color: white;">Privacy & Policy</a>
-        <a href="" style="color: white;">Terms & Conditions</a>
+        <a href="/privacy" style="color: white;">Privacy & Policy</a>
+        <a href="/termcondition" style="color: white;">Terms & Conditions</a>
     </div>
 </footer>
 

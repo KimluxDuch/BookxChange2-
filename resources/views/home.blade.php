@@ -122,7 +122,7 @@
             height: 20px;
             padding: 10px 100px 10px 40px;
             border-radius: 4px;
-            border: solid 2px #29b0f7;
+            border: solid 2px #121213;
         }
 
         .search_button {

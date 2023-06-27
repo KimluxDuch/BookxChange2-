@@ -14,14 +14,51 @@
                             @endforeach
                         @endif
                     </h1>
-                    <h1>Contact: <span>{{ $book->user->phone }}</span></h1>
-                    <h1>Location: <span>{{ $book->location }}</span></h1>
-                    <h2>Description: <span>{{ $book->description }}</span></h2>
+                    <h1>Contact Owner: <span>{{ $book->user->phone }}</span></h1>
+                    <h1>Location to Pick up: <span>{{ $book->location }}</span></h1>
+                    <h2>Book Description: <span>{{ $book->description }}</span></h2>
                 </div>
+            </div>
+            <div class="comment_area">
+                <form action="" method="POST">
+                    @csrf
+                    <div class="bg">
+                        <div>
+                            <h2>Leave a Comment</h2>
+                            <textarea type="text" placeholder="Say Something" name="" cols="90" rows="6"></textarea>
+                        </div>
+                    </div>
+                    <div class="grey">
+                        <div class="button">
+                            <button type="submit">Post</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     @endif
     <style>
+        .comment_area {
+            padding: 1rem;
+            font-size: 1.2rem;
+            text-align: center;
+            background: rgb(241, 241, 241);
+            font-family: 'Merriweather', sans-serif;
+            border-radius: 5px;
+        }
+        .comment_area button {
+            padding:  0.8rem 1rem;
+            border: none;
+            font-size: .8rem;
+            color: white;
+            background: rgb(0, 81, 255);
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .comment_area textarea {
+            border-radius: 5px;
+            font-family: 'Ysabeau Office', sans-serif;
+        }
         .detail .genre span:first-child::before {
             content: "";
         }
@@ -35,7 +72,7 @@
             display: grid;
             grid-template-columns: 1fr 3fr;
             column-gap: 2rem;
-            
+
         }
 
         .detail img {

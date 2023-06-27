@@ -38,6 +38,20 @@
                     <select name="location">
                         <option value="Paragon International University">Paragon International University</option>
                         <option value="Block 11">Block 11</option>
+                        <option value="Arabica coffee Toul Kork">Arabica coffee Toul Kork</option>
+                        <option value="Bak Touk High School">Bak Touk High School</option>
+                        <option value="Independence Monument, Independence Monument, Phnom Penh">Independence Monument
+                        </option>
+                        <option value="Wat Phnom">Wat Phnom</option>
+                        <option value="Royal Palace Park">Royal Palace Park</option>
+                        <option value="Megadis Store 371">Megadis Store 371</option>
+                        <option value="Aeon Mall Mean Chey">Aeon Mall Mean Chey</option>
+                        <option value="Coconut Park">Coconut Park</option>
+                        <option value="Chip Mong 271 Mega Mall">Chip Mong 271 Mega Mall</option>
+                        <option value="Eden Garden Mall">Eden Garden Mall</option>
+                        <option value="Midtown Community Mall">Midtown Community Mall</option>
+                        <option value="Olympic Market">Olympic Market</option>
+                        <option value="Chip Mong Sen Sok Mall">Chip Mong Sen Sok Mall</option>
                     </select>
                 </div>
                 <div>
@@ -52,7 +66,7 @@
             
             <div class="grey">
                 <div class="btn">
-                    <button type="submit">Upload</button>
+                    <button type="submit">Update</button>
                 </div>
             </div>
         </form>
