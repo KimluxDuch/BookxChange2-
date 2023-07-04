@@ -7,6 +7,7 @@ use App\Models\Books;
 use App\Models\Genres;
 use GuzzleHttp\Client;
 use App\Models\BookGenres;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,6 +36,37 @@ class MainController extends Controller
         return json_decode($response->getBody()->getContents())->data->link;
     }
 
+    public function showDescending(Request $request)
+    {
+        $query = $request->query('searchQuery');
+        $genresQuery = $request->query('genres');
+        $user = Auth::user() ;
+
+        if ($genresQuery) {
+            $books = Books::where('title', 'like', '%' . $query . '%')
+                ->whereHas('genres', function ($query) use ($genresQuery) {
+                    $query->where('genre_id', $genresQuery);
+                })->get();
+        } else if ($query != '' ){
+            $books = Books::where('title', 'like', '%' . $query . '%')->get();
+        }
+        else {
+            $books = Books::orderBy('id', 'desc')->get();
+        }
+
+        $genres = Genres::get();
+
+        // return response()->json($books);
+
+        return view('home_desc', [
+            'books' => $books,
+            'genres' => $genres,
+            'genresQuery' => $genresQuery,
+            'user' => $user
+        ]);
+    }
+
+
     public function home(Request $request)
     {
         $query = $request->query('searchQuery');
@@ -46,8 +78,11 @@ class MainController extends Controller
                 ->whereHas('genres', function ($query) use ($genresQuery) {
                     $query->where('genre_id', $genresQuery);
                 })->get();
-        } else {
+        } else if ($query != '' ){
             $books = Books::where('title', 'like', '%' . $query . '%')->get();
+        }
+        else {
+            $books = Books::orderBy('id', 'asc')->get();
         }
 
         $genres = Genres::get();
@@ -80,14 +115,19 @@ class MainController extends Controller
     }
     public function upload()
     {
+
+        $selectedLocations = ['Paragon International University', 'Block 11'];
+
         $genres = Genres::get();
         return view('upload', [
             'genres' => $genres,
+            'selectedLocations'=> $selectedLocations
         ]);
     }
     public function bookDetail($id)
     {
         $book = Books::where('id', $id)->first();
+        $comments = Comment::where('books_id',$book->id)->get();
         return view('bookDetail', [
             'book' => $book,
         ]);
@@ -145,6 +185,8 @@ class MainController extends Controller
                     ]);
                 }
             }
+
+
 
             if ($saveGenres && $createBook) {
                 return redirect('/');

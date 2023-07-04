@@ -3,6 +3,8 @@
 namespace App\Models;
 use App\Models\Genres;
 use App\Models\Genre;
+use App\Models\Comment;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -39,6 +41,11 @@ class Books extends Model
         return $this->belongsToMany(Genres::class, 'books_genres', 'book_id', 'genre_id');
 
 
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->whereNull('parent_id');
     }
 
     
