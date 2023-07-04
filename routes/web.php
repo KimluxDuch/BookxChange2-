@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CommentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,7 @@ Route::get('/signUp', [MainController::class, 'signUp']);
 Route::get('/login', [MainController::class, 'login'])->name('login');
 Route::get('/logout', [MainController::class, 'logout']);
 Route::get('book/detail/{id}', [MainController::class, 'bookDetail']);
+Route::get('/desc', [MainController::class, 'showDescending']);
 
 
 Route::resource('profile', ProfileController::class);
@@ -34,6 +37,9 @@ Route::post('/bookUploadSave', [MainController::class, 'bookUploadSave']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/upload', [MainController::class, 'upload']);
+    Route::post('/comments', [CommentController::class, 'store']);
+    
+
 });
 Route::get('/contactus', function () {
     return view('contactus');

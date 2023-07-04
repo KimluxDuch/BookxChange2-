@@ -1,5 +1,7 @@
 @extends('layout.master')
 @section('content')
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
     @if ($book)
         <div class="container">
             <div class="detail">
@@ -36,7 +38,27 @@
                 </form>
             </div>
         </div>
+
+
+  
+            <div class="container">
+                @include('comments.commentsDisplay', ['comments' => $book->comments, 'books_id' => $book->id])
+                <hr>
+                <h6>Add comment</h6>
+                <form action="/comments" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('POST')
+                    <div class="form-group">
+                        <input class="form-control input-style" name="body"></input>
+                        <input type="hidden" name="books_id" value="{{ $book->id }}" />
+                    </div>
+                    <input type="submit" class="btn-comment my-3" value="Add Comment" />
+                </form>
+            </div>
+
     @endif
+
+
     <style>
         .comment_area {
             padding: 1rem;
@@ -58,6 +80,27 @@
         .comment_area textarea {
             border-radius: 5px;
             font-family: 'Ysabeau Office', sans-serif;
+        }
+        .input-style {
+            width:280px; 
+            height:15px;
+        }
+
+        .btn-comment {
+            width: 110px;
+            height: 20px;
+            font-size: 0.8rem;
+        }
+
+        .btn-reply {
+            width: 70px;
+            height: 20px;
+            font-size: 0.8rem;
+        }
+
+        .comment-container {
+            background-color: red; 
+            padding: 25px;
         }
         .detail .genre span:first-child::before {
             content: "";

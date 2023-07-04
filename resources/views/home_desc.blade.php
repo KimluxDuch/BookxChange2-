@@ -28,15 +28,18 @@
                             Search
                         </button>
                     </div>
-                        <div class="dropdown mt-4">
+
+                    <div class="dropdown mt-4">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Sort By
                             </button>                           
                             <div class="dropdown-content">
-                                <a class="dropdown-item"  href="/desc"> Descending</a>
-                                <a class="dropdown-item"  href="/"> Acending</a>
+                                <a class="dropdown-item"  href="/desc">Descending</a>
+                                <a class="dropdown-item"  href="/">Acending</a>
                             </div>
                         </div>
+
+                    
                     <ul>
                         {{-- second argu pass props to book layout --}}
                         @include('layout.book', ['books' => $books])
@@ -47,7 +50,7 @@
     </div>
     <style>
 
-        .dropdown {
+    .dropdown {
         position: relative;
         display: inline-block;
         }
@@ -65,6 +68,7 @@
         .dropdown:hover .dropdown-content {
         display: block;
         }
+        .ge
         .genre {
             display: flex;
             flex-direction: column;
@@ -150,7 +154,7 @@
             height: 20px;
             padding: 10px 100px 10px 40px;
             border-radius: 4px;
-            border: solid 2px #121213;
+            border: solid 2px #29b0f7;
         }
 
         .search_button {
